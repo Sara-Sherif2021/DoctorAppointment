@@ -1,0 +1,15 @@
+{
+  "template": "app-nolayers",
+  "imports": {
+  },
+  "packages": {
+    "Doc.App": {
+      "path": "Doc.App/Doc.App.abppkg"
+    }
+  },
+  "folders": {
+    "items": {
+      "main": {}
+    }
+  }
+}

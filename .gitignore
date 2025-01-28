@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/VSWorkspaceState.json
+/.vs/ProjectSettings.json
+/.vs/Solution/v17
+/.vs/Solution/FileContentIndex
+/Doc.App/README.md
+/Doc.App/.gitignore
+/Doc.App/.gitattributes
