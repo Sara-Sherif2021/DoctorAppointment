@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc;
 
-namespace Doc.App.Controllers;
+namespace Doctor.Appointment.Controllers;
 
 public class HomeController : AbpController
 {

@@ -1,38 +1,38 @@
 {
   "template": "app-nolayers",
   "imports": {
-    "Volo.Abp.LeptonXLiteTheme": {
-      "version": "4.1.0-rc.1",
+    "Volo.Abp.BasicTheme": {
+      "version": "9.0.4",
       "isInstalled": true
     },
     "Volo.Abp.Account": {
-      "version": "9.1.0-rc.1",
+      "version": "9.0.4",
       "isInstalled": true
     },
     "Volo.Abp.OpenIddict": {
-      "version": "9.1.0-rc.1",
+      "version": "9.0.4",
       "isInstalled": true
     },
     "Volo.Abp.Identity": {
-      "version": "9.1.0-rc.1",
+      "version": "9.0.4",
       "isInstalled": true
     },
     "Volo.Abp.SettingManagement": {
-      "version": "9.1.0-rc.1",
+      "version": "9.0.4",
       "isInstalled": true
     },
     "Volo.Abp.PermissionManagement": {
-      "version": "9.1.0-rc.1",
+      "version": "9.0.4",
       "isInstalled": true
     },
     "Volo.Abp.FeatureManagement": {
-      "version": "9.1.0-rc.1",
+      "version": "9.0.4",
       "isInstalled": true
     }
   },
   "packages": {
-    "Doc.App": {
-      "path": "Doc.App/Doc.App.abppkg"
+    "Doctor.Appointment": {
+      "path": "Doctor.Appointment/Doctor.Appointment.abppkg"
     }
   }
 }

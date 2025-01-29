@@ -1,7 +1,7 @@
 ﻿using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Doc.App.Helpers
+namespace Doctor.Appointment.Helpers
 {
     public class CustomSwaggerFilter : IDocumentFilter
     {

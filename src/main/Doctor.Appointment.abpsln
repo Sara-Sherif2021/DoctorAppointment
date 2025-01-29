@@ -1,0 +1,68 @@
+{
+  "id": "f0db22d8-2683-4f81-987b-ec9e7f55e22c",
+  "template": "app-nolayers",
+  "versions": {
+    "AbpFramework": "9.0.4",
+    "AbpStudio": "0.9.22",
+    "TargetDotnetFramework": "net9.0"
+  },
+  "modules": {
+    "Doctor.Appointment": {
+      "path": "Doctor.Appointment.abpmdl"
+    },
+    "Doctor.Appointment.Availability": {
+      "path": "../modules/doctor.appointment.availability/Doctor.Appointment.Availability.abpmdl",
+      "folder": "modules"
+    },
+    "Doctor.Appointment.Management": {
+      "path": "../modules/doctor.appointment.management/Doctor.Appointment.Management.abpmdl",
+      "folder": "modules"
+    },
+    "Doctor.Appointment.Booking": {
+      "path": "../modules/doctor.appointment.booking/Doctor.Appointment.Booking.abpmdl",
+      "folder": "modules"
+    },
+    "Doctor.Appointment.Shared": {
+      "path": "../Shared/doctor.appointment.shared/Doctor.Appointment.Shared.abpmdl",
+      "folder": "Shared"
+    },
+    "Doctor.Appointment.Notification": {
+      "path": "../modules/doctor.appointment.notification/Doctor.Appointment.Notification.abpmdl",
+      "folder": "modules"
+    }
+  },
+  "runProfiles": {
+    "Default": {
+      "path": "etc/run-profiles/Default.abprun.json"
+    }
+  },
+  "options": {
+    "httpRequests": {
+      "ignoredUrls": [
+        "^/metrics$"
+      ]
+    }
+  },
+  "creatingStudioConfiguration": {
+    "template": "app-nolayers",
+    "createdAbpStudioVersion": "0.9.22",
+    "multiTenancy": "false",
+    "runInstallLibs": "true",
+    "useLocalReferences": "false",
+    "uiFramework": "no-ui",
+    "databaseProvider": "ef",
+    "runDbMigrator": "true",
+    "databaseManagementSystem": "sqlserver",
+    "createInitialMigration": "true",
+    "theme": "basic",
+    "themeStyle": "",
+    "publicWebsite": "",
+    "socialLogin": ""
+  },
+  "folders": {
+    "items": {
+      "modules": {},
+      "Shared": {}
+    }
+  }
+}

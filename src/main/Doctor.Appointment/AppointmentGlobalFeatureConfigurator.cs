@@ -1,8 +1,8 @@
 using Volo.Abp.Threading;
 
-namespace Doc.App;
+namespace Doctor.Appointment;
 
-public static class AppGlobalFeatureConfigurator
+public static class AppointmentGlobalFeatureConfigurator
 {
     private static readonly OneTimeRunner OneTimeRunner = new OneTimeRunner();
 
