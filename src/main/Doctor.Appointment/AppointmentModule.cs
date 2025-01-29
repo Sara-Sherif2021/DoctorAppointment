@@ -1,4 +1,5 @@
 using Doctor.Appointment.Helpers;
+using Doctor.Availability;
 using Microsoft.OpenApi.Models;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
@@ -21,11 +22,8 @@ namespace Doctor.Appointment;
     typeof(AbpCachingModule),
     typeof(AbpSwashbuckleModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpStudioClientAspNetCoreModule)
-
-)]
-[DependsOn(
-   // typeof(AvailabilityHttpApiModule)
+    typeof(AbpStudioClientAspNetCoreModule),
+    typeof(AvailabilityApplicationModule)
 )]
 public class AppointmentModule : AbpModule
 {
@@ -52,6 +50,7 @@ public class AppointmentModule : AbpModule
         Configure<AbpAspNetCoreMvcOptions>(options =>
         {
             options.ConventionalControllers.Create(typeof(AppointmentModule).Assembly);
+            options.ConventionalControllers.Create(typeof(AvailabilityApplicationModule).Assembly);
         });
     }
 
@@ -110,7 +109,6 @@ public class AppointmentModule : AbpModule
             options.SwaggerEndpoint("/swagger/v1/swagger.json", "Appointment API");
         });
 
-        app.UseAuditing();
         app.UseAbpSerilogEnrichers();
         app.UseConfiguredEndpoints();
     }

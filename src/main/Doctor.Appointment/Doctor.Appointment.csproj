@@ -44,4 +44,7 @@
   <ItemGroup>
     <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\modules\DoctorAvailability\src\Doctor.Availability.Application\Doctor.Availability.Application.csproj" />
+  </ItemGroup>
 </Project>

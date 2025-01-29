@@ -1,0 +1,101 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXLiteTheme": {
+      "version": "4.0.5",
+      "isInstalled": true
+    },
+    "Volo.Abp.Account": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.TenantManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "Doctor.Availability.Application": {
+      "path": "src/Doctor.Availability.Application/Doctor.Availability.Application.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Availability.Application.Tests": {
+      "path": "test/Doctor.Availability.Application.Tests/Doctor.Availability.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "Doctor.Availability.Domain.Shared": {
+      "path": "src/Doctor.Availability.Domain.Shared/Doctor.Availability.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Availability.Application.Contracts": {
+      "path": "src/Doctor.Availability.Application.Contracts/Doctor.Availability.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Availability.HttpApi": {
+      "path": "src/Doctor.Availability.HttpApi/Doctor.Availability.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Availability.HttpApi.Client": {
+      "path": "src/Doctor.Availability.HttpApi.Client/Doctor.Availability.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Availability.EntityFrameworkCore.Tests": {
+      "path": "test/Doctor.Availability.EntityFrameworkCore.Tests/Doctor.Availability.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "Doctor.Availability.EntityFrameworkCore": {
+      "path": "src/Doctor.Availability.EntityFrameworkCore/Doctor.Availability.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Availability.TestBase": {
+      "path": "test/Doctor.Availability.TestBase/Doctor.Availability.TestBase.abppkg",
+      "folder": "test"
+    },
+    "Doctor.Availability.Domain.Tests": {
+      "path": "test/Doctor.Availability.Domain.Tests/Doctor.Availability.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "Doctor.Availability.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/Doctor.Availability.HttpApi.Client.ConsoleTestApp/Doctor.Availability.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "Doctor.Availability.DbMigrator": {
+      "path": "src/Doctor.Availability.DbMigrator/Doctor.Availability.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Availability.HttpApi.Host": {
+      "path": "src/Doctor.Availability.HttpApi.Host/Doctor.Availability.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Availability.Domain": {
+      "path": "src/Doctor.Availability.Domain/Doctor.Availability.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}
