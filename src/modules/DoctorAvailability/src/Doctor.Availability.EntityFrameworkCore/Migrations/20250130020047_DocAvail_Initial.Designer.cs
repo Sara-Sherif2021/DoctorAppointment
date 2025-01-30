@@ -4,6 +4,7 @@ using Doctor.Availability.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Doctor.Availability.Migrations
 {
     [DbContext(typeof(AvailabilityDbContext))]
-    partial class AvailabilityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250130020047_DocAvail_Initial")]
+    partial class DocAvail_Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,53 +26,6 @@ namespace Doctor.Availability.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Doctor.Availability.Entities.Doctor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Specializations")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("Doctors");
-                });
-
-            modelBuilder.Entity("Doctor.Availability.Entities.Slot", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal?>("Cost")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsReserved")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("SlotTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DoctorId");
-
-                    b.ToTable("Slots");
-                });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
                 {
@@ -334,17 +290,6 @@ namespace Doctor.Availability.Migrations
                     b.ToTable("AbpEntityPropertyChanges", (string)null);
                 });
 
-            modelBuilder.Entity("Doctor.Availability.Entities.Slot", b =>
-                {
-                    b.HasOne("Doctor.Availability.Entities.Doctor", "Doctor")
-                        .WithMany("Slots")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Doctor");
-                });
-
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
                 {
                     b.HasOne("Volo.Abp.AuditLogging.AuditLog", null)
@@ -370,11 +315,6 @@ namespace Doctor.Availability.Migrations
                         .HasForeignKey("EntityChangeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Doctor.Availability.Entities.Doctor", b =>
-                {
-                    b.Navigation("Slots");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>

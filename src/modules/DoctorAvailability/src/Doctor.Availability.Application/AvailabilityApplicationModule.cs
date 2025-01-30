@@ -4,7 +4,8 @@ using Volo.Abp.Modularity;
 namespace Doctor.Availability;
 
 [DependsOn(
-    typeof(AvailabilityDomainModule)
+    typeof(AvailabilityDomainModule),
+    typeof(AbpAutoMapperModule)
     )]
 public class AvailabilityApplicationModule : AbpModule
 {

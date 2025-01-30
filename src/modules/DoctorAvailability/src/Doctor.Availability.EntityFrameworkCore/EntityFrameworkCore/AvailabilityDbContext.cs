@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
-using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
+using Doctor.Availability.Entities;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
+using System.Reflection.Emit;
+using System.Reflection;
 
 namespace Doctor.Availability.EntityFrameworkCore;
 
@@ -14,19 +16,9 @@ public class AvailabilityDbContext :
 
 
     #region Entities from the modules
+    public DbSet<Entities.Doctor> Doctors { get; set; }
+    public DbSet<Slot> Slots { get; set; }
 
-    /* Notice: We only implemented IIdentityProDbContext and ISaasDbContext
-     * and replaced them for this DbContext. This allows you to perform JOIN
-     * queries for the entities of these modules over the repositories easily. You
-     * typically don't need that for other modules. But, if you need, you can
-     * implement the DbContext interface of the needed module and use ReplaceDbContext
-     * attribute just like IIdentityProDbContext and ISaasDbContext.
-     *
-     * More info: Replacing a DbContext of a module ensures that the related module
-     * uses this DbContext on runtime. Otherwise, it will use its own DbContext class.
-     */
-
-   
 
     #endregion
 
@@ -42,16 +34,8 @@ public class AvailabilityDbContext :
 
         /* Include modules to your migration db context */
 
-        builder.ConfigureBackgroundJobs();
         builder.ConfigureAuditLogging();
-        
-        /* Configure your own tables/entities inside here */
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(AvailabilityConsts.DbTablePrefix + "YourEntities", AvailabilityConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
+        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }

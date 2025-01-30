@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    
+    <Import Project="..\common.props" />
+
+    <PropertyGroup>
+        <TargetFrameworks>net9.0</TargetFrameworks>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Doctor.Availability.Share</RootNamespace>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="9.0.4"/>
+    </ItemGroup>
+
+</Project>

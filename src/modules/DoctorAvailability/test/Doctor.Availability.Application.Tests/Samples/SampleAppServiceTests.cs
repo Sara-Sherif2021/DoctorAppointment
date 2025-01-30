@@ -1,8 +1,4 @@
-﻿using Shouldly;
-using System.Threading.Tasks;
-using Volo.Abp.Identity;
-using Volo.Abp.Modularity;
-using Xunit;
+﻿using Volo.Abp.Modularity;
 
 namespace Doctor.Availability.Samples;
 
@@ -14,21 +10,4 @@ namespace Doctor.Availability.Samples;
 public abstract class SampleAppServiceTests<TStartupModule> : AvailabilityApplicationTestBase<TStartupModule>
     where TStartupModule : IAbpModule
 {
-    private readonly IIdentityUserAppService _userAppService;
-
-    protected SampleAppServiceTests()
-    {
-        _userAppService = GetRequiredService<IIdentityUserAppService>();
-    }
-
-    [Fact]
-    public async Task Initial_Data_Should_Contain_Admin_User()
-    {
-        //Act
-        var result = await _userAppService.GetListAsync(new GetIdentityUsersInput());
-
-        //Assert
-        result.TotalCount.ShouldBeGreaterThan(0);
-        result.Items.ShouldContain(u => u.UserName == "admin");
-    }
 }

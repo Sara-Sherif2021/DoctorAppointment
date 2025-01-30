@@ -1,4 +1,8 @@
 using AutoMapper;
+using Doctor.Availability.Dto.Doctor;
+using Doctor.Availability.Dto.Slot;
+using Doctor.Availability.Entities;
+using Doctor.Availability.Share.Dto;
 
 namespace Doctor.Availability;
 
@@ -6,8 +10,12 @@ public class AvailabilityApplicationAutoMapperProfile : Profile
 {
     public AvailabilityApplicationAutoMapperProfile()
     {
-        /* You can configure your AutoMapper mapping configuration here.
-         * Alternatively, you can split your mapping configurations
-         * into multiple profile classes for a better organization. */
+        CreateMap<Slot, SlotDto>();
+        CreateMap<SlotDto, Slot>();
+        CreateMap<Slot, AvailableSlotResultDto>();
+
+        CreateMap<CreateDoctorDto, Entities.Doctor>();
+        CreateMap<DoctorDto, Entities.Doctor>();
+        CreateMap<Entities.Doctor, DoctorDto>();
     }
 }

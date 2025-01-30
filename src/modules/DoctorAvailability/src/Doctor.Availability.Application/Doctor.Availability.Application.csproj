@@ -9,16 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Doctor.Availability.Domain\Doctor.Availability.Domain.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="9.0.4" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="9.0.4" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="9.0.4" />
-    <PackageReference Include="Volo.Abp.SettingManagement.Application" Version="9.0.4" />
-    <PackageReference Include="Volo.Abp.Account.Application" Version="9.0.4" />
-    <PackageReference Include="Volo.Abp.Identity.Application" Version="9.0.4" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Application" Version="9.0.4" />
+    <ProjectReference Include="..\Doctor.Availability.Domain\Doctor.Availability.Domain.csproj" />
+    <ProjectReference Include="..\Doctor.Availability.Share\Doctor.Availability.Share.csproj" />
   </ItemGroup>
 
 </Project>

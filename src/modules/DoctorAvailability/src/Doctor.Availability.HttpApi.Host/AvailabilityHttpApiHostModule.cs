@@ -6,8 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
+using Volo.Abp.AspNetCore.Mvc.AntiForgery;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
@@ -36,6 +38,13 @@ public class AvailabilityHttpApiHostModule : AbpModule
     {
         var configuration = context.Services.GetConfiguration();
         var hostingEnvironment = context.Services.GetHostingEnvironment();
+
+        Configure<AbpAntiForgeryOptions>(options =>
+        {
+            options.TokenCookie.Expiration = TimeSpan.FromDays(365);
+            options.AutoValidateIgnoredHttpMethods.Add("POST");
+
+        });
 
         ConfigureConventionalControllers();
         ConfigureSwagger(context, configuration);
@@ -79,14 +88,12 @@ public class AvailabilityHttpApiHostModule : AbpModule
         app.UseRouting();
 
         app.UseUnitOfWork();
-        app.UseAuthorization();
+       // app.UseAuthorization();
 
         app.UseSwagger();
         app.UseAbpSwaggerUI(options =>
         {
             options.SwaggerEndpoint("/swagger/v1/swagger.json", "Availability API");
-
-            var configuration = context.ServiceProvider.GetRequiredService<IConfiguration>();
           });
 
         app.UseAuditing();
