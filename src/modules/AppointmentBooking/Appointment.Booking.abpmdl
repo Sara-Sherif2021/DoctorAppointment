@@ -1,0 +1,104 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXLiteTheme": {
+      "version": "4.0.5",
+      "isInstalled": true
+    },
+    "Volo.Abp.Account": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.TenantManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "Appointment.Booking.Application": {
+      "path": "src/Appointment.Booking.Application/Appointment.Booking.Application.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Booking.Application.Tests": {
+      "path": "test/Appointment.Booking.Application.Tests/Appointment.Booking.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "Appointment.Booking.Domain.Shared": {
+      "path": "src/Appointment.Booking.Domain.Shared/Appointment.Booking.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Booking.Application.Contracts": {
+      "path": "src/Appointment.Booking.Application.Contracts/Appointment.Booking.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Booking.HttpApi": {
+      "path": "src/Appointment.Booking.HttpApi/Appointment.Booking.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Booking.HttpApi.Client": {
+      "path": "src/Appointment.Booking.HttpApi.Client/Appointment.Booking.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Booking.EntityFrameworkCore.Tests": {
+      "path": "test/Appointment.Booking.EntityFrameworkCore.Tests/Appointment.Booking.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "Appointment.Booking.EntityFrameworkCore": {
+      "path": "src/Appointment.Booking.EntityFrameworkCore/Appointment.Booking.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Booking.TestBase": {
+      "path": "test/Appointment.Booking.TestBase/Appointment.Booking.TestBase.abppkg",
+      "folder": "test"
+    },
+    "Appointment.Booking.Domain.Tests": {
+      "path": "test/Appointment.Booking.Domain.Tests/Appointment.Booking.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "Appointment.Booking.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/Appointment.Booking.HttpApi.Client.ConsoleTestApp/Appointment.Booking.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "Appointment.Booking.DbMigrator": {
+      "path": "src/Appointment.Booking.DbMigrator/Appointment.Booking.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Booking.HttpApi.Host": {
+      "path": "src/Appointment.Booking.HttpApi.Host/Appointment.Booking.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Booking.Domain": {
+      "path": "src/Appointment.Booking.Domain/Appointment.Booking.Domain.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Booking.Share": {
+      "path": "src/Appointment.Booking.Share/Appointment.Booking.Share.abppkg"
+    }
+  }
+}

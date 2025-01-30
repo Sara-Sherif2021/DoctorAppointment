@@ -1,7 +1,7 @@
-﻿namespace Doctor.Availability;
+﻿namespace Appointment.Booking;
 
-public static class AvailabilityConsts
+public static class BookingConsts
 {
     public const string DbTablePrefix = "App";
     public const string? DbSchema = null;
-   }
+}
