@@ -3,6 +3,7 @@
 using Doctor.Availability.Dto;
 using Doctor.Availability.Dto.Doctor;
 using Doctor.Availability.Entities;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

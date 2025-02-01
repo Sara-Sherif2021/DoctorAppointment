@@ -98,7 +98,7 @@
       "folder": "src"
     },
     "Appointment.Booking.Share": {
-      "path": "Appointment.Booking.Share/Appointment.Booking.Share.abppkg"
+      "path": "src/Appointment.Booking.Share/Appointment.Booking.Share.abppkg"
     }
   }
 }

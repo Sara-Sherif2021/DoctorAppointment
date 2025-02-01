@@ -121,7 +121,7 @@
     },
     {
       "namespace": "Appointment.Booking.EntityFrameworkCore",
-      "connectionStringName": "Default",
+      "connectionStringName": "AppointmentBooking",
       "databaseTables": [],
       "replacedDbContexts": [
         {

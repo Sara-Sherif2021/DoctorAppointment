@@ -32,6 +32,9 @@
     "Volo.Abp.FeatureManagement": {
       "version": "9.0.4",
       "isInstalled": true
+    },
+    "Doctor.Availability": {
+      "path": "../DoctorAvailability/Doctor.Availability.abpmdl"
     }
   },
   "folders": {
@@ -57,14 +60,6 @@
       "path": "src/Appointment.Booking.Application.Contracts/Appointment.Booking.Application.Contracts.abppkg",
       "folder": "src"
     },
-    "Appointment.Booking.HttpApi": {
-      "path": "src/Appointment.Booking.HttpApi/Appointment.Booking.HttpApi.abppkg",
-      "folder": "src"
-    },
-    "Appointment.Booking.HttpApi.Client": {
-      "path": "src/Appointment.Booking.HttpApi.Client/Appointment.Booking.HttpApi.Client.abppkg",
-      "folder": "src"
-    },
     "Appointment.Booking.EntityFrameworkCore.Tests": {
       "path": "test/Appointment.Booking.EntityFrameworkCore.Tests/Appointment.Booking.EntityFrameworkCore.Tests.abppkg",
       "folder": "test"
@@ -81,10 +76,6 @@
       "path": "test/Appointment.Booking.Domain.Tests/Appointment.Booking.Domain.Tests.abppkg",
       "folder": "test"
     },
-    "Appointment.Booking.HttpApi.Client.ConsoleTestApp": {
-      "path": "test/Appointment.Booking.HttpApi.Client.ConsoleTestApp/Appointment.Booking.HttpApi.Client.ConsoleTestApp.abppkg",
-      "folder": "test"
-    },
     "Appointment.Booking.DbMigrator": {
       "path": "src/Appointment.Booking.DbMigrator/Appointment.Booking.DbMigrator.abppkg",
       "folder": "src"
@@ -98,7 +89,8 @@
       "folder": "src"
     },
     "Appointment.Booking.Share": {
-      "path": "src/Appointment.Booking.Share/Appointment.Booking.Share.abppkg"
+      "path": "src/Appointment.Booking.Share/Appointment.Booking.Share.abppkg",
+      "folder": "src"
     }
   }
 }

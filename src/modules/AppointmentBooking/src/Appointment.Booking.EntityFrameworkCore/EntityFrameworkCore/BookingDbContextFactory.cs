@@ -16,7 +16,7 @@ public class BookingDbContextFactory : IDesignTimeDbContextFactory<BookingDbCont
         BookingEfCoreEntityExtensionMappings.Configure();
 
         var builder = new DbContextOptionsBuilder<BookingDbContext>()
-            .UseSqlServer(configuration.GetConnectionString("Default"));
+            .UseSqlServer(configuration.GetConnectionString("AppointmentBooking"));
         
         return new BookingDbContext(builder.Options);
     }

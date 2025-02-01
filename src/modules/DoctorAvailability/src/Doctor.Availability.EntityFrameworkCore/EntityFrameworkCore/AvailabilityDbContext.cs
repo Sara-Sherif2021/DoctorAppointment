@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace Doctor.Availability.EntityFrameworkCore;
 
-[ConnectionStringName("Default")]
+[ConnectionStringName("DoctorAvailability")]
 public class AvailabilityDbContext :
     AbpDbContext<AvailabilityDbContext>
 {

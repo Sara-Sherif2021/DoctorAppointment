@@ -1,18 +1,14 @@
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp.AuditLogging.EntityFrameworkCore;
-using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.Modularity;
 using Volo.Abp.Studio;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Appointment.Booking.EntityFrameworkCore;
 
 [DependsOn(
     typeof(BookingDomainModule),
-    typeof(AbpEntityFrameworkCoreSqlServerModule),
-    typeof(AbpBackgroundJobsEntityFrameworkCoreModule),
-    typeof(AbpAuditLoggingEntityFrameworkCoreModule)
+    typeof(AbpEntityFrameworkCoreSqlServerModule)
     )]
 public class BookingEntityFrameworkCoreModule : AbpModule
 {

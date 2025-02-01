@@ -16,8 +16,9 @@ public class AvailabilityDbContextFactory : IDesignTimeDbContextFactory<Availabi
         AvailabilityEfCoreEntityExtensionMappings.Configure();
 
         var builder = new DbContextOptionsBuilder<AvailabilityDbContext>()
-            .UseSqlServer(configuration.GetConnectionString("Default"));
-        
+            .UseSqlServer(configuration.GetConnectionString("DoctorAvailability"));
+
+
         return new AvailabilityDbContext(builder.Options);
     }
 

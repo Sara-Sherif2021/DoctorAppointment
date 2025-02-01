@@ -1,8 +1,13 @@
+using Appointment.Booking;
+using Appointment.Booking.EntityFrameworkCore;
 using Doctor.Appointment.Helpers;
 using Doctor.Availability;
+using Doctor.Availability.EntityFrameworkCore;
+using Doctor.Availability.Share;
 using Microsoft.OpenApi.Models;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
+using Volo.Abp.AspNetCore.Mvc.AntiForgery;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
@@ -23,7 +28,11 @@ namespace Doctor.Appointment;
     typeof(AbpSwashbuckleModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpStudioClientAspNetCoreModule),
-    typeof(AvailabilityApplicationModule)
+    typeof(AvailabilityApplicationModule),
+    typeof(AvailabilityEntityFrameworkCoreModule),
+    typeof(BookingApplicationModule),
+    typeof(BookingEntityFrameworkCoreModule),
+    typeof(AvailabilityShareModule)
 )]
 public class AppointmentModule : AbpModule
 {
@@ -39,7 +48,17 @@ public class AppointmentModule : AbpModule
     {
         var hostingEnvironment = context.Services.GetHostingEnvironment();
         var configuration = context.Services.GetConfiguration();
-       
+
+        Configure<AbpAntiForgeryOptions>(options =>
+        {
+            options.TokenCookie.Expiration = TimeSpan.FromDays(365);
+            options.AutoValidateIgnoredHttpMethods.Add("POST");
+            options.AutoValidateIgnoredHttpMethods.Add("PUT");
+            options.AutoValidateIgnoredHttpMethods.Add("Delete");
+        });
+
+        context.Services.AddTransient<Availability.Share.Interfaces.ISlotIntegration, Availability.Services.SlotIntegrationService>();
+
         ConfigureAutoMapper(context);
         ConfigureSwagger(context.Services, configuration);
         ConfigureAutoApiControllers();
@@ -51,12 +70,14 @@ public class AppointmentModule : AbpModule
         {
             options.ConventionalControllers.Create(typeof(AppointmentModule).Assembly);
             options.ConventionalControllers.Create(typeof(AvailabilityApplicationModule).Assembly);
+            options.ConventionalControllers.Create(typeof(BookingApplicationModule).Assembly);
+
         });
     }
 
     private void ConfigureSwagger(IServiceCollection services, IConfiguration configuration)
     {
-        services.AddAbpSwaggerGen(          
+        services.AddAbpSwaggerGen(
             options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "Appointment API", Version = "v1" });

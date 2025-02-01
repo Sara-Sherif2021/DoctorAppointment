@@ -10,6 +10,7 @@ namespace Doctor.Availability.Dto.Doctor
     public class CreateDoctorDto
     {
         public string Name { get; set; }
+        public string Email { get; set; }
         public string? Specializations { get; set; }
     }
 }

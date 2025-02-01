@@ -49,18 +49,6 @@
       "path": "test/Doctor.Availability.Application.Tests/Doctor.Availability.Application.Tests.abppkg",
       "folder": "test"
     },
-    "Doctor.Availability.Application.Contracts": {
-      "path": "src/Doctor.Availability.Application.Contracts/Doctor.Availability.Application.Contracts.abppkg",
-      "folder": "src"
-    },
-    "Doctor.Availability.HttpApi": {
-      "path": "src/Doctor.Availability.HttpApi/Doctor.Availability.HttpApi.abppkg",
-      "folder": "src"
-    },
-    "Doctor.Availability.HttpApi.Client": {
-      "path": "src/Doctor.Availability.HttpApi.Client/Doctor.Availability.HttpApi.Client.abppkg",
-      "folder": "src"
-    },
     "Doctor.Availability.EntityFrameworkCore.Tests": {
       "path": "test/Doctor.Availability.EntityFrameworkCore.Tests/Doctor.Availability.EntityFrameworkCore.Tests.abppkg",
       "folder": "test"
@@ -75,10 +63,6 @@
     },
     "Doctor.Availability.Domain.Tests": {
       "path": "test/Doctor.Availability.Domain.Tests/Doctor.Availability.Domain.Tests.abppkg",
-      "folder": "test"
-    },
-    "Doctor.Availability.HttpApi.Client.ConsoleTestApp": {
-      "path": "test/Doctor.Availability.HttpApi.Client.ConsoleTestApp/Doctor.Availability.HttpApi.Client.ConsoleTestApp.abppkg",
       "folder": "test"
     },
     "Doctor.Availability.DbMigrator": {

@@ -22,13 +22,14 @@ namespace Doctor.Availability.Helpers
                    .ForEach(x => swaggerDoc.Paths.Remove(x.Key));
 
             //remove Schemas those start with volo.abp prefix
-            swaggerDoc.Components.Schemas
-                   .Where(x =>
-                          x.Key.StartsWith("Volo.Abp")
-                      && !x.Key.StartsWith("Volo.Abp.Http.RemoteService")
-                         )
-                   .ToList()
-                   .ForEach(x => swaggerDoc.Components.Schemas.Remove(x.Key));
+            //swaggerDoc.Components.Schemas
+            //       .Where(x =>
+            //          //    x.Key.StartsWith("Volo.Abp")
+            //          //&& 
+            //          !x.Key.StartsWith("Volo.Abp.Http.RemoteService")
+            //             )
+            //       .ToList()
+            //       .ForEach(x => swaggerDoc.Components.Schemas.Remove(x.Key));
 
         }
     }

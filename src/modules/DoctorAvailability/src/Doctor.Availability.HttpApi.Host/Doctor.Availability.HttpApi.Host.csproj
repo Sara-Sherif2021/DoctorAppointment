@@ -33,7 +33,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Doctor.Availability.Application\Doctor.Availability.Application.csproj" />
     <ProjectReference Include="..\Doctor.Availability.EntityFrameworkCore\Doctor.Availability.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\Doctor.Availability.Share\Doctor.Availability.Share.csproj" />
   </ItemGroup>
 
   <ItemGroup>

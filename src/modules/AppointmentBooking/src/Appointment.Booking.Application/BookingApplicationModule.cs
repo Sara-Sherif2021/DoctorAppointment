@@ -1,18 +1,16 @@
-﻿using Volo.Abp.PermissionManagement;
-using Volo.Abp.SettingManagement;
-using Volo.Abp.Account;
-using Volo.Abp.Identity;
+using Doctor.Availability.Share;
+using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.Application;
 using Volo.Abp.AutoMapper;
-using Volo.Abp.FeatureManagement;
 using Volo.Abp.Modularity;
-using Volo.Abp.TenantManagement;
 
 namespace Appointment.Booking;
 
 [DependsOn(
     typeof(BookingDomainModule),
-    typeof(BookingApplicationContractsModule),
-    typeof(AbpAutoMapperModule)
+    typeof(AbpDddApplicationModule),
+    typeof(AbpAutoMapperModule),
+    typeof(AvailabilityShareModule)
     )]
 public class BookingApplicationModule : AbpModule
 {

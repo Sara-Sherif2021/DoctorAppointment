@@ -10,24 +10,12 @@
     "Doctor.Appointment": {
       "path": "Doctor.Appointment.abpmdl"
     },
-    "Doctor.Appointment.Availability": {
-      "path": "../modules/doctor.appointment.availability/Doctor.Appointment.Availability.abpmdl",
+    "Doctor.Availability": {
+      "path": "../modules/DoctorAvailability/Doctor.Availability.abpmdl",
       "folder": "modules"
     },
-    "Doctor.Appointment.Management": {
-      "path": "../modules/doctor.appointment.management/Doctor.Appointment.Management.abpmdl",
-      "folder": "modules"
-    },
-    "Doctor.Appointment.Booking": {
-      "path": "../modules/doctor.appointment.booking/Doctor.Appointment.Booking.abpmdl",
-      "folder": "modules"
-    },
-    "Doctor.Appointment.Shared": {
-      "path": "../Shared/doctor.appointment.shared/Doctor.Appointment.Shared.abpmdl",
-      "folder": "Shared"
-    },
-    "Doctor.Appointment.Notification": {
-      "path": "../modules/doctor.appointment.notification/Doctor.Appointment.Notification.abpmdl",
+    "Appointment.Booking": {
+      "path": "../modules/AppointmentBooking/Appointment.Booking.abpmdl",
       "folder": "modules"
     }
   },

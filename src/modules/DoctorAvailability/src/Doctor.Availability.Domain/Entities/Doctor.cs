@@ -6,6 +6,7 @@ namespace Doctor.Availability.Entities
     public class Doctor : Entity<int>
     {
         public string Name { get; set; }
+        public string Email { get; set; }
         public string? Specializations { get; set; }
         public virtual ICollection<Slot> Slots { get; set; }
     }

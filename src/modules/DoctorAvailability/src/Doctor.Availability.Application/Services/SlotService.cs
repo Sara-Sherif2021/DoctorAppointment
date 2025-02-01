@@ -16,10 +16,10 @@ namespace Doctor.Availability.Services
 {
     public class SlotService : CrudAppService<Slot, SlotDto, Guid, PagedAndSortedResultRequestDto>, IScopedDependency
     {
-        private IRepository<Slot, Guid> _repository { get; set; }
-        public SlotService(IRepository<Slot, Guid> repository) : base(repository)
+        private IRepository<Slot, Guid> _slotRepository { get; set; }
+        public SlotService(IRepository<Slot, Guid> slotRepository) : base(slotRepository)
         {
-            _repository = repository;
+            _slotRepository = slotRepository;
         }
 
         public async Task<List<SlotDto>> GetDoctorSlots(int doctorId)
@@ -27,23 +27,11 @@ namespace Doctor.Availability.Services
             List<SlotDto> result = null;
             if (doctorId > 0)
             {
-                var query = await _repository.GetQueryableAsync();
+                var query = await _slotRepository.GetQueryableAsync();
                 var slots = query.Where(s => s.DoctorId == doctorId).ToList();
                 result = ObjectMapper.Map<List<Slot>, List<SlotDto>>(slots);
             }
             return result;
-        }
-
-        [ApiExplorerSettings(IgnoreApi = true)]
-        public override Task DeleteAsync(Guid id)
-        {
-            return base.DeleteAsync(id);
-        }
-
-        [ApiExplorerSettings(IgnoreApi = true)]
-        public override Task<SlotDto> UpdateAsync(Guid id, SlotDto input)
-        {
-            return base.UpdateAsync(id, input);
         }
     }
 }

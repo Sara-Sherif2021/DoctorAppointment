@@ -121,7 +121,7 @@
     },
     {
       "namespace": "Doctor.Availability.EntityFrameworkCore",
-      "connectionStringName": "Default",
+      "connectionStringName": "DoctorAvailability",
       "databaseTables": [],
       "replacedDbContexts": [
         {
