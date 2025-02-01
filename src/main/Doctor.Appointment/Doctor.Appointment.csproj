@@ -55,5 +55,7 @@
     <ProjectReference Include="..\..\modules\DoctorAvailability\src\Doctor.Availability.Domain\Doctor.Availability.Domain.csproj" />
     <ProjectReference Include="..\..\modules\DoctorAvailability\src\Doctor.Availability.EntityFrameworkCore\Doctor.Availability.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\modules\DoctorAvailability\src\Doctor.Availability.Share\Doctor.Availability.Share.csproj" />
+    <ProjectReference Include="..\..\modules\Notification\src\Doctor.Appointment.Notification.Application\Doctor.Appointment.Notification.Application.csproj" />
+    <ProjectReference Include="..\..\Shared\Doctor.Appointment.Share\Doctor.Appointment.Share.csproj" />
   </ItemGroup>
 </Project>

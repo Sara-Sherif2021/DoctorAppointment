@@ -6,16 +6,20 @@ using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Services;
+using Doctor.Appointment.Share.Services;
+using Doctor.Appointment.Share.Dto;
 
 namespace Appointment.Booking.DomainServices
 {
     public class SlotAppointmentManager : DomainService, ITransientDependency, ISlotAppointmentManager
     {
         private ISlotIntegration _slotIntegration { get; set; }
+        private INotificationService _notificationService { get; set; }
 
-        public SlotAppointmentManager(ISlotIntegration slotIntegration)
+        public SlotAppointmentManager(ISlotIntegration slotIntegration, INotificationService notificationService)
         {
             _slotIntegration = slotIntegration;
+            _notificationService = notificationService;
         }
 
 
@@ -28,6 +32,8 @@ namespace Appointment.Booking.DomainServices
                 {
                     var createdAppointment = new Entities.Appointment(id, slotId, patientId, patientName, patientEmail, reservedAt);
                     //send notification
+                    await SendConfirmationEmailData(patientEmail, slot.DoctorEmail, slot.SlotTime);
+
                     return createdAppointment;
                 }
                 {
@@ -38,6 +44,14 @@ namespace Appointment.Booking.DomainServices
             {
                 throw new EntityNotFoundException(BookingConsts.InvalidSlotIdErrorMessage);
             }
+        }
+        private async Task SendConfirmationEmailData(string patientEmail, string doctorEmail, DateTime slotTime)
+        {
+            var emailData = new List<EmailNotificationDto>() {
+           new EmailNotificationDto { ReceiverEmail = patientEmail, EmailSubject="Appointment Confirmation", EmailContent = $"Your appointment has been booked at {slotTime.ToString()} " },
+           new EmailNotificationDto { ReceiverEmail = doctorEmail, EmailSubject="Appointment Confirmation", EmailContent = $"New appointment has been booked at {slotTime.ToString()} " } };
+
+            await _notificationService.SendEmail(emailData);
         }
     }
 }

@@ -1,0 +1,101 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXLiteTheme": {
+      "version": "4.0.5",
+      "isInstalled": true
+    },
+    "Volo.Abp.Account": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.TenantManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "Doctor.Appointment.Notification.Application": {
+      "path": "src/Doctor.Appointment.Notification.Application/Doctor.Appointment.Notification.Application.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Appointment.Notification.Application.Tests": {
+      "path": "test/Doctor.Appointment.Notification.Application.Tests/Doctor.Appointment.Notification.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "Doctor.Appointment.Notification.Domain.Shared": {
+      "path": "src/Doctor.Appointment.Notification.Domain.Shared/Doctor.Appointment.Notification.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Appointment.Notification.Application.Contracts": {
+      "path": "src/Doctor.Appointment.Notification.Application.Contracts/Doctor.Appointment.Notification.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Appointment.Notification.HttpApi": {
+      "path": "src/Doctor.Appointment.Notification.HttpApi/Doctor.Appointment.Notification.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Appointment.Notification.HttpApi.Client": {
+      "path": "src/Doctor.Appointment.Notification.HttpApi.Client/Doctor.Appointment.Notification.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Appointment.Notification.EntityFrameworkCore.Tests": {
+      "path": "test/Doctor.Appointment.Notification.EntityFrameworkCore.Tests/Doctor.Appointment.Notification.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "Doctor.Appointment.Notification.EntityFrameworkCore": {
+      "path": "src/Doctor.Appointment.Notification.EntityFrameworkCore/Doctor.Appointment.Notification.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Appointment.Notification.TestBase": {
+      "path": "test/Doctor.Appointment.Notification.TestBase/Doctor.Appointment.Notification.TestBase.abppkg",
+      "folder": "test"
+    },
+    "Doctor.Appointment.Notification.Domain.Tests": {
+      "path": "test/Doctor.Appointment.Notification.Domain.Tests/Doctor.Appointment.Notification.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "Doctor.Appointment.Notification.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/Doctor.Appointment.Notification.HttpApi.Client.ConsoleTestApp/Doctor.Appointment.Notification.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "Doctor.Appointment.Notification.DbMigrator": {
+      "path": "src/Doctor.Appointment.Notification.DbMigrator/Doctor.Appointment.Notification.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Appointment.Notification.HttpApi.Host": {
+      "path": "src/Doctor.Appointment.Notification.HttpApi.Host/Doctor.Appointment.Notification.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Appointment.Notification.Domain": {
+      "path": "src/Doctor.Appointment.Notification.Domain/Doctor.Appointment.Notification.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}

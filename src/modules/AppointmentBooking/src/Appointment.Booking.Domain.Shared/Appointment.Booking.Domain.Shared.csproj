@@ -6,7 +6,6 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <RootNamespace>Appointment.Booking</RootNamespace>
-    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Shared\Doctor.Appointment.Share\Doctor.Appointment.Share.csproj" />
     <ProjectReference Include="..\..\..\DoctorAvailability\src\Doctor.Availability.Share\Doctor.Availability.Share.csproj" />
   </ItemGroup>
 

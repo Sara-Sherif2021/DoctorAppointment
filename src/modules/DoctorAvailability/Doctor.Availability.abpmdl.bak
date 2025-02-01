@@ -78,7 +78,11 @@
       "folder": "src"
     },
     "Doctor.Availability.Share": {
-      "path": "Doctor.Availability.Share/Doctor.Availability.Share.abppkg"
+      "path": "src/Doctor.Availability.Share/Doctor.Availability.Share.abppkg",
+      "folder": "src"
+    },
+    "Doctor.Appointment.Share": {
+      "path": "Doctor.Appointment.Share/Doctor.Appointment.Share.abppkg"
     }
   }
 }

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Doctor.Appointment.Notification</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="9.0.4" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" Version="9.0.4" />
+    <PackageReference Include="Volo.Abp.Emailing" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Shared\Doctor.Appointment.Share\Doctor.Appointment.Share.csproj" />
+  </ItemGroup>
+
+</Project>

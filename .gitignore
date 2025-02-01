@@ -10,3 +10,5 @@
 /Doc.App/.gitignore
 /Doc.App/.gitattributes
 /.vs
+/src/Shared/Doctor.Appointment.Share/bin/Debug/net9.0
+/src/Shared/Doctor.Appointment.Share/obj
