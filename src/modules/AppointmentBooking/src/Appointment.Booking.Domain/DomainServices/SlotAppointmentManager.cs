@@ -8,6 +8,7 @@ using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Services;
 using Doctor.Appointment.Share.Services;
 using Doctor.Appointment.Share.Dto;
+using Microsoft.Extensions.Hosting;
 
 namespace Appointment.Booking.DomainServices
 {
@@ -32,7 +33,7 @@ namespace Appointment.Booking.DomainServices
                 {
                     var createdAppointment = new Entities.Appointment(id, slotId, patientId, patientName, patientEmail, reservedAt);
                     //send notification
-                    await SendConfirmationEmailData(patientEmail, slot.DoctorEmail, slot.SlotTime);
+                    await SendConfirmationEmailData(patientEmail, slot.DoctorEmail, patientName, slot.DoctorName, slot.SlotTime);
 
                     return createdAppointment;
                 }
@@ -45,11 +46,12 @@ namespace Appointment.Booking.DomainServices
                 throw new EntityNotFoundException(BookingConsts.InvalidSlotIdErrorMessage);
             }
         }
-        private async Task SendConfirmationEmailData(string patientEmail, string doctorEmail, DateTime slotTime)
+        private async Task SendConfirmationEmailData(string patientEmail, string doctorEmail, string patientName, string doctorName, DateTime slotTime)
         {
+            string emailBody = $"New appointment has been booked for patient {patientName} with doctor {doctorName} at {slotTime.ToString()}";
             var emailData = new List<EmailNotificationDto>() {
-           new EmailNotificationDto { ReceiverEmail = patientEmail, EmailSubject="Appointment Confirmation", EmailContent = $"Your appointment has been booked at {slotTime.ToString()} " },
-           new EmailNotificationDto { ReceiverEmail = doctorEmail, EmailSubject="Appointment Confirmation", EmailContent = $"New appointment has been booked at {slotTime.ToString()} " } };
+           new EmailNotificationDto { ReceiverEmail = patientEmail, EmailSubject="Appointment Confirmation", EmailContent = emailBody},
+           new EmailNotificationDto { ReceiverEmail = doctorEmail, EmailSubject="Appointment Confirmation", EmailContent = emailBody} };
 
             await _notificationService.SendEmail(emailData);
         }
