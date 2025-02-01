@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Appointment.Management</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="9.0.4" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Shared\Doctor.Appointment.Share\Doctor.Appointment.Share.csproj" />
+    <ProjectReference Include="..\..\..\..\AppointmentBooking\src\Appointment.Booking.Share\Appointment.Booking.Share.csproj" />
+    <ProjectReference Include="..\Appointment.Management.Application.Contracts\Appointment.Management.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Appointment.Management.Domain\Appointment.Management.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

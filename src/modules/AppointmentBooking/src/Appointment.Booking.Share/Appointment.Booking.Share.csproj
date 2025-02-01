@@ -13,4 +13,8 @@
 
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\Appointment.Booking.Domain.Shared\Appointment.Booking.Domain.Shared.csproj" />
+	</ItemGroup>
+
 </Project>

@@ -1,7 +1,6 @@
 ﻿using Appointment.Booking.DomainServices;
 using Appointment.Booking.Dto;
 using Doctor.Availability.Share.Dto;
-using Doctor.Availability.Share.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;

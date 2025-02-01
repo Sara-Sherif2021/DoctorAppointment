@@ -1,14 +1,15 @@
-﻿using Doctor.Availability.Share.Dto;
+﻿using Appointment.Booking.Specifications;
+using Doctor.Appointment.Share.Dto;
+using Doctor.Appointment.Share.Services;
 using Doctor.Availability.Share.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Entities;
+using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Domain.Services;
-using Doctor.Appointment.Share.Services;
-using Doctor.Appointment.Share.Dto;
-using Microsoft.Extensions.Hosting;
 
 namespace Appointment.Booking.DomainServices
 {
@@ -16,11 +17,13 @@ namespace Appointment.Booking.DomainServices
     {
         private ISlotIntegration _slotIntegration { get; set; }
         private INotificationService _notificationService { get; set; }
+        private IRepository<Entities.Appointment> _appointmentRepository { get; set; }
 
-        public SlotAppointmentManager(ISlotIntegration slotIntegration, INotificationService notificationService)
+        public SlotAppointmentManager(ISlotIntegration slotIntegration, INotificationService notificationService, IRepository<Entities.Appointment> appointmentRepository)
         {
             _slotIntegration = slotIntegration;
             _notificationService = notificationService;
+            _appointmentRepository = appointmentRepository;
         }
 
 
@@ -45,6 +48,17 @@ namespace Appointment.Booking.DomainServices
             {
                 throw new EntityNotFoundException(BookingConsts.InvalidSlotIdErrorMessage);
             }
+        }
+        public async Task<List<Entities.Appointment>> GetUpcomingAppointment(int doctorId)
+        {
+            List<Entities.Appointment> appointments = null;
+            var slots = await _slotIntegration.GetDoctorUpcomingSlots(doctorId);
+            if (slots!=null && slots.Count>0)
+            {
+                var query = await _appointmentRepository.GetQueryableAsync();
+                appointments= query.Where(new UpcomingAppointmentFiltration(slots.Select(s=>s.Id).ToList()).ToExpression()).ToList();
+            }
+            return appointments;
         }
         private async Task SendConfirmationEmailData(string patientEmail, string doctorEmail, string patientName, string doctorName, DateTime slotTime)
         {

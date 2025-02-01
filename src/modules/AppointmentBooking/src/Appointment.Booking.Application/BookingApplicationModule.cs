@@ -1,5 +1,5 @@
+using Appointment.Booking.Share;
 using Doctor.Availability.Share;
-using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Application;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
@@ -10,7 +10,8 @@ namespace Appointment.Booking;
     typeof(BookingDomainModule),
     typeof(AbpDddApplicationModule),
     typeof(AbpAutoMapperModule),
-    typeof(AvailabilityShareModule)
+    typeof(AvailabilityShareModule),
+    typeof(BookingShareModule)
     )]
 public class BookingApplicationModule : AbpModule
 {

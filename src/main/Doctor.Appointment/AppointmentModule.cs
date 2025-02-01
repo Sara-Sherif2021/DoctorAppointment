@@ -1,5 +1,8 @@
 using Appointment.Booking;
+using Appointment.Booking.Cases;
 using Appointment.Booking.EntityFrameworkCore;
+using Appointment.Booking.Share;
+using Appointment.Management;
 using Doctor.Appointment.Helpers;
 using Doctor.Appointment.Notification;
 using Doctor.Availability;
@@ -18,6 +21,7 @@ using Volo.Abp.Modularity;
 using Volo.Abp.Studio.Client.AspNetCore;
 using Volo.Abp.Swashbuckle;
 
+
 namespace Doctor.Appointment;
 
 [DependsOn(
@@ -34,7 +38,9 @@ namespace Doctor.Appointment;
     typeof(BookingApplicationModule),
     typeof(BookingEntityFrameworkCoreModule),
     typeof(AvailabilityShareModule),
-    typeof(NotificationApplicationModule)
+    typeof(NotificationApplicationModule),
+    typeof(ManagementApplicationModule),
+    typeof(BookingShareModule)
 )]
 public class AppointmentModule : AbpModule
 {
@@ -61,6 +67,8 @@ public class AppointmentModule : AbpModule
 
         context.Services.AddTransient<Availability.Share.Interfaces.ISlotIntegration, Availability.Services.SlotIntegrationService>();
         context.Services.AddTransient<Doctor.Appointment.Share.Services.INotificationService, Doctor.Appointment.Share.Services.NotificationService>();
+        context.Services.AddTransient<IUpcomingAppointment, UpcomingAppointment>();
+        context.Services.AddTransient<IUpdateAppointmentStatus, UpdateAppointmentStatus>();
 
         ConfigureAutoMapper(context);
         ConfigureSwagger(context.Services, configuration);
@@ -74,8 +82,7 @@ public class AppointmentModule : AbpModule
             options.ConventionalControllers.Create(typeof(AppointmentModule).Assembly);
             options.ConventionalControllers.Create(typeof(AvailabilityApplicationModule).Assembly);
             options.ConventionalControllers.Create(typeof(BookingApplicationModule).Assembly);
-            options.ConventionalControllers.Create(typeof(NotificationApplicationModule).Assembly);
-
+            options.ConventionalControllers.Create(typeof(ManagementApplicationModule).Assembly);
         });
     }
 

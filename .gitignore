@@ -12,3 +12,4 @@
 /.vs
 /src/Shared/Doctor.Appointment.Share/bin/Debug/net9.0
 /src/Shared/Doctor.Appointment.Share/obj
+/src/modules/AppointmentManagement/src/core/Appointment.Management.DbMigrator/Logs

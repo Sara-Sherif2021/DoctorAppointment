@@ -13,6 +13,6 @@ namespace Doctor.Availability.Share.Interfaces
     {
         Task<AvailableSlotResultDto> GetAvailableSlotById(Guid slotId);
         Task<List<AvailableSlotResultDto>> GetDoctorAvailableSlots(int doctorId);
-       // Task<bool> IsSlotAvailable(Guid slotId);
+        Task<List<UpcomingSlotResultDto>> GetDoctorUpcomingSlots(int doctorId);
     }
 }

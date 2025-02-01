@@ -1,6 +1,7 @@
 using AutoMapper;
 using Doctor.Availability.Share.Dto;
 using Appointment.Booking.Dto;
+using Appointment.Booking.Share.Dto;
 namespace Appointment.Booking;
 
 public class BookingApplicationAutoMapperProfile : Profile
@@ -14,6 +15,7 @@ public class BookingApplicationAutoMapperProfile : Profile
         CreateMap<AvailableSlotResultDto, DoctorAvailableSlotsDto>();
 
         CreateMap<Entities.Appointment, AppointmentDto>();
+        CreateMap<Entities.Appointment, UpcomingAppointmentDto>();
 
     }
 }

@@ -45,14 +45,11 @@
     <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\modules\AppointmentBooking\src\Appointment.Booking.Application.Contracts\Appointment.Booking.Application.Contracts.csproj" />
     <ProjectReference Include="..\..\modules\AppointmentBooking\src\Appointment.Booking.Application\Appointment.Booking.Application.csproj" />
-    <ProjectReference Include="..\..\modules\AppointmentBooking\src\Appointment.Booking.Domain.Shared\Appointment.Booking.Domain.Shared.csproj" />
-    <ProjectReference Include="..\..\modules\AppointmentBooking\src\Appointment.Booking.Domain\Appointment.Booking.Domain.csproj" />
     <ProjectReference Include="..\..\modules\AppointmentBooking\src\Appointment.Booking.EntityFrameworkCore\Appointment.Booking.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\modules\AppointmentBooking\src\Appointment.Booking.Share\Appointment.Booking.Share.csproj" />
+    <ProjectReference Include="..\..\modules\AppointmentManagement\src\Core\Appointment.Management.Application\Appointment.Management.Application.csproj" />
     <ProjectReference Include="..\..\modules\DoctorAvailability\src\Doctor.Availability.Application\Doctor.Availability.Application.csproj" />
-    <ProjectReference Include="..\..\modules\DoctorAvailability\src\Doctor.Availability.Domain\Doctor.Availability.Domain.csproj" />
     <ProjectReference Include="..\..\modules\DoctorAvailability\src\Doctor.Availability.EntityFrameworkCore\Doctor.Availability.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\modules\DoctorAvailability\src\Doctor.Availability.Share\Doctor.Availability.Share.csproj" />
     <ProjectReference Include="..\..\modules\Notification\src\Doctor.Appointment.Notification.Application\Doctor.Appointment.Notification.Application.csproj" />

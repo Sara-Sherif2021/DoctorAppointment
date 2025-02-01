@@ -6,7 +6,7 @@ namespace Appointment.Booking.Share;
 [DependsOn(
     typeof(AbpDddApplicationContractsModule)
 )]
-public class ShareApplicationContractsModule : AbpModule
+public class BookingShareModule : AbpModule
 {
 
 }

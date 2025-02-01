@@ -1,0 +1,101 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXLiteTheme": {
+      "version": "4.0.5",
+      "isInstalled": true
+    },
+    "Volo.Abp.Account": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.TenantManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "9.0.4",
+      "isInstalled": true
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "Appointment.Management.Application": {
+      "path": "src/Appointment.Management.Application/Appointment.Management.Application.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Management.Application.Tests": {
+      "path": "test/Appointment.Management.Application.Tests/Appointment.Management.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "Appointment.Management.Domain.Shared": {
+      "path": "src/Appointment.Management.Domain.Shared/Appointment.Management.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Management.Application.Contracts": {
+      "path": "src/Appointment.Management.Application.Contracts/Appointment.Management.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Management.HttpApi": {
+      "path": "src/Appointment.Management.HttpApi/Appointment.Management.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Management.HttpApi.Client": {
+      "path": "src/Appointment.Management.HttpApi.Client/Appointment.Management.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Management.EntityFrameworkCore.Tests": {
+      "path": "test/Appointment.Management.EntityFrameworkCore.Tests/Appointment.Management.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "Appointment.Management.EntityFrameworkCore": {
+      "path": "src/Appointment.Management.EntityFrameworkCore/Appointment.Management.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Management.TestBase": {
+      "path": "test/Appointment.Management.TestBase/Appointment.Management.TestBase.abppkg",
+      "folder": "test"
+    },
+    "Appointment.Management.Domain.Tests": {
+      "path": "test/Appointment.Management.Domain.Tests/Appointment.Management.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "Appointment.Management.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/Appointment.Management.HttpApi.Client.ConsoleTestApp/Appointment.Management.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "Appointment.Management.DbMigrator": {
+      "path": "src/Appointment.Management.DbMigrator/Appointment.Management.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Management.HttpApi.Host": {
+      "path": "src/Appointment.Management.HttpApi.Host/Appointment.Management.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "Appointment.Management.Domain": {
+      "path": "src/Appointment.Management.Domain/Appointment.Management.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}

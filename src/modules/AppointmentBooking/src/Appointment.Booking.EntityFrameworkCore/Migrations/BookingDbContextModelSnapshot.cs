@@ -29,6 +29,9 @@ namespace Appointment.Booking.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int?>("AppointmentStatus")
+                        .HasColumnType("int");
+
                     b.Property<string>("PatientEmail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

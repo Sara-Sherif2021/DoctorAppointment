@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Appointment.Booking.Domain\Appointment.Booking.Domain.csproj" />
     <ProjectReference Include="..\Appointment.Booking.Application.Contracts\Appointment.Booking.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Appointment.Booking.Share\Appointment.Booking.Share.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.3.0" />
