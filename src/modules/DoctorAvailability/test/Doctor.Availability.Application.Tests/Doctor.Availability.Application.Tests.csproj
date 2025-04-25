@@ -10,11 +10,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Doctor.Availability.Application\Doctor.Availability.Application.csproj" />
+    <ProjectReference Include="..\..\src\Doctor.Availability.Domain\Doctor.Availability.Domain.csproj" />
     <ProjectReference Include="..\Doctor.Availability.Domain.Tests\Doctor.Availability.Domain.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="Volo.Abp.Data" Version="9.1.1" />
   </ItemGroup>
 
 </Project>

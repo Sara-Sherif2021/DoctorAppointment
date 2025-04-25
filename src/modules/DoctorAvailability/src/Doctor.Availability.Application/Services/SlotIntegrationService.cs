@@ -15,9 +15,8 @@ using Volo.Abp.Domain.Repositories;
 
 namespace Doctor.Availability.Services
 {
-    //[ApiExplorerSettings(IgnoreApi = true)]
     [IntegrationService]
-    public class SlotIntegrationService : ApplicationService, ISlotIntegration, IScopedDependency
+    public class SlotIntegrationService : ApplicationService, ISlotIntegration, IScopedDependency, ISlotIntegrationService
     {
         private IRepository<Slot, Guid> _repository { get; set; }
 

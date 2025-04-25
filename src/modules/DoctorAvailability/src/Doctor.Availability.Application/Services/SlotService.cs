@@ -1,7 +1,5 @@
 ﻿using Doctor.Availability.Dto.Slot;
 using Doctor.Availability.Entities;
-using Doctor.Availability.Share.Dto;
-using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +12,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace Doctor.Availability.Services
 {
-    public class SlotService : CrudAppService<Slot, SlotDto, Guid, PagedAndSortedResultRequestDto>, IScopedDependency
+    public class SlotService : CrudAppService<Slot, SlotDto, Guid, PagedAndSortedResultRequestDto>, IScopedDependency, ISlotService
     {
         private IRepository<Slot, Guid> _slotRepository { get; set; }
         public SlotService(IRepository<Slot, Guid> slotRepository) : base(slotRepository)
