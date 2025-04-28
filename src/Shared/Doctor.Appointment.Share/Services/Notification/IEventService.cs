@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace Doctor.Appointment.Share.Services
 {
-    public interface INotificationService
+    public interface IEventService<T> where T : class
     {
-        Task SendEmail(List<EmailNotificationDto> emailNotification);
+        Task PublishEventAsync(T eventData);
     }
 }

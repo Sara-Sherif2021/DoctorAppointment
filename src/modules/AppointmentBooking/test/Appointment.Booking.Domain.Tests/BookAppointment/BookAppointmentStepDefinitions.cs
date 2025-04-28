@@ -21,14 +21,14 @@ namespace Appointment.Booking.BookAppointment
     {
         private ISlotAppointmentManager _slotAppointmentManager;
         private ISlotIntegration _slotIntegration;
-        private INotificationService _notificationService { get; set; }
+        private IEventService<List<EmailNotificationDto>> _eventService { get; set; }
         private IRepository<Entities.Appointment> _appointmentRepository { get; set; }
         private Entities.Appointment _createdAppointment { get; set; }
         public BookAppointmentStepDefinitions()
         {
             _appointmentRepository = Substitute.For<IRepository<Entities.Appointment>>();
-            _notificationService = Substitute.For<INotificationService>();
-            _notificationService.SendEmail(Arg.Any<List<EmailNotificationDto>>()).Returns(Task.CompletedTask);
+            _eventService = Substitute.For<IEventService<List<EmailNotificationDto>>>();
+            _eventService.PublishEventAsync(Arg.Any<List<EmailNotificationDto>>()).Returns(Task.CompletedTask);
 
         }
 
@@ -42,9 +42,10 @@ namespace Appointment.Booking.BookAppointment
         [When("when the patient try to book this slot using below data")]
         public async Task WhenWhenThePatientTryToBookThisSlotUsingBelowData(DataTable dataTable)
         {
-            _slotAppointmentManager = new SlotAppointmentManager(_slotIntegration, _notificationService, _appointmentRepository);
+            _slotAppointmentManager = new SlotAppointmentManager(_slotIntegration, _eventService, _appointmentRepository);
             var appointmentTable = dataTable.CreateInstance<(Guid id, Guid slotId, Guid patientId, string patientName, string patientEmail, DateTime reservedAt)>();
-            _createdAppointment = await _slotAppointmentManager.CreateAppointment(appointmentTable.id, appointmentTable.slotId, appointmentTable.patientId, appointmentTable.patientName, appointmentTable.patientEmail, appointmentTable.reservedAt);
+            _createdAppointment = await _slotAppointmentManager.CreateAppointment(appointmentTable.id, appointmentTable.slotId, appointmentTable.patientId,
+                appointmentTable.patientName, appointmentTable.patientEmail, appointmentTable.reservedAt);
         }
 
         [Then("The slot with slotId {string} will be booked correctly")]

@@ -16,13 +16,13 @@ namespace Appointment.Booking.DomainServices
     public class SlotAppointmentManager : DomainService, ITransientDependency, ISlotAppointmentManager
     {
         private ISlotIntegration _slotIntegration { get; set; }
-        private INotificationService _notificationService { get; set; }
+        private IEventService<List<EmailNotificationDto>> _eventService { get; set; }
         private IRepository<Entities.Appointment> _appointmentRepository { get; set; }
 
-        public SlotAppointmentManager(ISlotIntegration slotIntegration, INotificationService notificationService, IRepository<Entities.Appointment> appointmentRepository)
+        public SlotAppointmentManager(ISlotIntegration slotIntegration, IEventService<List<EmailNotificationDto>> eventService, IRepository<Entities.Appointment> appointmentRepository)
         {
             _slotIntegration = slotIntegration;
-            _notificationService = notificationService;
+            _eventService = eventService;
             _appointmentRepository = appointmentRepository;
         }
 
@@ -53,10 +53,10 @@ namespace Appointment.Booking.DomainServices
         {
             List<Entities.Appointment> appointments = null;
             var slots = await _slotIntegration.GetDoctorUpcomingSlots(doctorId);
-            if (slots!=null && slots.Count>0)
+            if (slots != null && slots.Count > 0)
             {
                 var query = await _appointmentRepository.GetQueryableAsync();
-                appointments= query.Where(new UpcomingAppointmentFiltration(slots.Select(s=>s.Id).ToList()).ToExpression()).ToList();
+                appointments = query.Where(new UpcomingAppointmentFiltration(slots.Select(s => s.Id).ToList()).ToExpression()).ToList();
             }
             return appointments;
         }
@@ -67,7 +67,7 @@ namespace Appointment.Booking.DomainServices
            new EmailNotificationDto { ReceiverEmail = patientEmail, EmailSubject="Appointment Confirmation", EmailContent = emailBody},
            new EmailNotificationDto { ReceiverEmail = doctorEmail, EmailSubject="Appointment Confirmation", EmailContent = emailBody} };
 
-            await _notificationService.SendEmail(emailData);
+            await _eventService.PublishEventAsync(emailData);
         }
     }
 }
