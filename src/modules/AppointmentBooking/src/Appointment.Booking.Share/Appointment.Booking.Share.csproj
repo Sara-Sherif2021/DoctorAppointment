@@ -17,4 +17,8 @@
 	  <ProjectReference Include="..\Appointment.Booking.Domain.Shared\Appointment.Booking.Domain.Shared.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Dto\" />
+	</ItemGroup>
+
 </Project>

@@ -4,7 +4,7 @@ using Volo.Abp.EntityFrameworkCore;
 
 namespace Appointment.Management.EntityFrameworkCore;
 
-[ConnectionStringName("Default")]
+[ConnectionStringName("AppointmentManagement")]
 public class ManagementDbContext :
     AbpDbContext<ManagementDbContext>
 {
@@ -24,6 +24,7 @@ public class ManagementDbContext :
      * uses this DbContext on runtime. Otherwise, it will use its own DbContext class.
      */
 
+    public DbSet<Entities.Appointment> Appointments { get; set; }
     #endregion
 
     public ManagementDbContext(DbContextOptions<ManagementDbContext> options)

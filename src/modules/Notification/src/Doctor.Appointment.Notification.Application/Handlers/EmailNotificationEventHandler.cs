@@ -17,7 +17,7 @@ namespace Doctor.Appointment.Notification.Handlers
     {
         private readonly IEmailSender _emailSender;
         private readonly ILogger<EmailNotificationEventHandler> _logger;
-        public EmailNotificationEventHandler(IEmailSender emailSender, ILogger<EmailNotificationEventHandler> logger = null)
+        public EmailNotificationEventHandler(IEmailSender emailSender, ILogger<EmailNotificationEventHandler> logger)
         {
             _emailSender = emailSender;
             _logger = logger;
@@ -27,18 +27,18 @@ namespace Doctor.Appointment.Notification.Handlers
             foreach (var emailData in emailNotifications)
             {
                 _logger.LogInformation($"New email EmailSubject: {emailData.EmailSubject},  ReceiverEmail: {emailData.ReceiverEmail}, EmailContent: {emailData.EmailContent}");
-                try
-                {
-                    await _emailSender.SendAsync(
-                       emailData.ReceiverEmail,     // target email address
-                       emailData.EmailSubject,      // subject
-                       emailData.EmailContent      // email body
-                   );
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogException(ex);
-                }
+                //try
+                //{
+                //    await _emailSender.SendAsync(
+                //       emailData.ReceiverEmail,     // target email address
+                //       emailData.EmailSubject,      // subject
+                //       emailData.EmailContent      // email body
+                //   );
+                //}
+                //catch (Exception ex)
+                //{
+                //    _logger.LogException(ex);
+                //}
             }
         }
     }

@@ -20,8 +20,7 @@ namespace Appointment.Booking.Cases
         public async Task<AppointmentDto> CreateAppointment(AppointmentDto appointment)
         {
             AppointmentDto result = null;
-            var appointmentEntity = await _sotAppointmentManager.CreateAppointment(appointment.Id, appointment.SlotId, appointment.PatientId, appointment.PatientName,appointment.PatientEmail, appointment.ReservedAt);
-            var addedAppointment = await _appointmentRepository.InsertAsync(appointmentEntity);
+            var addedAppointment = await _sotAppointmentManager.CreateAppointment(appointment.Id, appointment.SlotId, appointment.PatientId, appointment.PatientName,appointment.PatientEmail, appointment.ReservedAt);
             if (addedAppointment != null)
             {
                 result = ObjectMapper.Map<Entities.Appointment, AppointmentDto>(addedAppointment);

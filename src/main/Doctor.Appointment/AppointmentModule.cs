@@ -1,8 +1,8 @@
 using Appointment.Booking;
-using Appointment.Booking.Cases;
 using Appointment.Booking.EntityFrameworkCore;
 using Appointment.Booking.Share;
 using Appointment.Management;
+using Appointment.Management.EntityFrameworkCore;
 using Doctor.Appointment.Helpers;
 using Doctor.Appointment.Notification;
 using Doctor.Availability;
@@ -40,6 +40,9 @@ namespace Doctor.Appointment;
     typeof(AvailabilityShareModule),
     typeof(NotificationApplicationModule),
     typeof(ManagementApplicationModule),
+    typeof(ManagementDomainModule),
+    typeof(ManagementDomainSharedModule),
+    typeof(ManagementEntityFrameworkCoreModule),
     typeof(BookingShareModule)
 )]
 public class AppointmentModule : AbpModule
@@ -67,8 +70,7 @@ public class AppointmentModule : AbpModule
 
         context.Services.AddScoped<Availability.Share.Interfaces.ISlotIntegration, Availability.Services.SlotIntegrationService>();
         context.Services.AddScoped(typeof(Share.Services.IEventService<>), typeof(Share.Services.EventService<>));
-        context.Services.AddScoped<IUpcomingAppointment, UpcomingAppointment>();
-        context.Services.AddScoped<IUpdateAppointmentStatus, UpdateAppointmentStatus>();
+       // context.Services.AddScoped<IUpdateAppointmentStatus, UpdateAppointmentStatus>();
 
         ConfigureAutoMapper(context);
         ConfigureSwagger(context.Services, configuration);
@@ -83,6 +85,7 @@ public class AppointmentModule : AbpModule
             options.ConventionalControllers.Create(typeof(AvailabilityApplicationModule).Assembly);
             options.ConventionalControllers.Create(typeof(BookingApplicationModule).Assembly);
             options.ConventionalControllers.Create(typeof(ManagementApplicationModule).Assembly);
+            options.ConventionalControllers.Create(typeof(ManagementDomainModule).Assembly);
         });
     }
 

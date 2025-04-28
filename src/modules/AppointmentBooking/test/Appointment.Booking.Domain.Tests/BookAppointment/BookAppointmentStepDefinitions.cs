@@ -1,34 +1,35 @@
-using System;
+using Appointment.Booking.DomainServices;
+using Doctor.Appointment.Share.Dto;
+using Doctor.Appointment.Share.Services;
+using Doctor.Availability.Share.Dto;
 using Doctor.Availability.Share.Interfaces;
 using NSubstitute;
 using Reqnroll;
-using Volo.Abp.Modularity;
-using Doctor.Availability.Share.Dto;
-using Appointment.Booking.DomainServices;
-using Doctor.Appointment.Share.Services;
-using Volo.Abp.Domain.Repositories;
-using Doctor.Appointment.Share.Dto;
+using Shouldly;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Shouldly;
-using NSubstitute.ReturnsExtensions;
+using Volo.Abp.Domain.Repositories;
 
 namespace Appointment.Booking.BookAppointment
 {
     [Binding]
     public class BookAppointmentStepDefinitions
-   
+
     {
         private ISlotAppointmentManager _slotAppointmentManager;
         private ISlotIntegration _slotIntegration;
-        private IEventService<List<EmailNotificationDto>> _eventService { get; set; }
+        private IEventService<List<EmailNotificationDto>> _notificationEventService { get; set; }
+        private IEventService<AppointmentDto> _appointmentEventService { get; set; }
         private IRepository<Entities.Appointment> _appointmentRepository { get; set; }
         private Entities.Appointment _createdAppointment { get; set; }
         public BookAppointmentStepDefinitions()
         {
             _appointmentRepository = Substitute.For<IRepository<Entities.Appointment>>();
-            _eventService = Substitute.For<IEventService<List<EmailNotificationDto>>>();
-            _eventService.PublishEventAsync(Arg.Any<List<EmailNotificationDto>>()).Returns(Task.CompletedTask);
+            _notificationEventService = Substitute.For<IEventService<List<EmailNotificationDto>>>();
+            _notificationEventService.PublishEventAsync(Arg.Any<List<EmailNotificationDto>>()).Returns(Task.CompletedTask);
+            _appointmentEventService = Substitute.For<IEventService<AppointmentDto>>();
+            _appointmentEventService.PublishEventAsync(Arg.Any<AppointmentDto>()).Returns(Task.CompletedTask);
 
         }
 
@@ -42,7 +43,7 @@ namespace Appointment.Booking.BookAppointment
         [When("when the patient try to book this slot using below data")]
         public async Task WhenWhenThePatientTryToBookThisSlotUsingBelowData(DataTable dataTable)
         {
-            _slotAppointmentManager = new SlotAppointmentManager(_slotIntegration, _eventService, _appointmentRepository);
+            _slotAppointmentManager = new SlotAppointmentManager(_slotIntegration, _notificationEventService, _appointmentRepository, _appointmentEventService);
             var appointmentTable = dataTable.CreateInstance<(Guid id, Guid slotId, Guid patientId, string patientName, string patientEmail, DateTime reservedAt)>();
             _createdAppointment = await _slotAppointmentManager.CreateAppointment(appointmentTable.id, appointmentTable.slotId, appointmentTable.patientId,
                 appointmentTable.patientName, appointmentTable.patientEmail, appointmentTable.reservedAt);

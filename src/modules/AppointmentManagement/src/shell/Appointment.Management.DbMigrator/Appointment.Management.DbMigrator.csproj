@@ -16,8 +16,8 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Autofac" Version="9.0.4" />
-    <ProjectReference Include="..\..\shell\Appointment.Management.EntityFrameworkCore\Appointment.Management.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\Appointment.Management.Application.Contracts\Appointment.Management.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\Core\Appointment.Management.Application.Contracts\Appointment.Management.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Appointment.Management.EntityFrameworkCore\Appointment.Management.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

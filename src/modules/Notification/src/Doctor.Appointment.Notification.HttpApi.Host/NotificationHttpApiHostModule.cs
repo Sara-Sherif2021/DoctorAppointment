@@ -43,7 +43,7 @@ public class NotificationHttpApiHostModule : AbpModule
         }
 
         ConfigureConventionalControllers();
-        ConfigureSwagger(context, configuration);
+        ConfigureSwagger(context, configuration);      
     }
     private void ConfigureConventionalControllers()
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 
-namespace Appointment.Booking.Share.Dto
+namespace Appointment.Management.Dto
 {
     public class UpcomingAppointmentDto : EntityDto<Guid>
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Volo.Abp.Specifications;
 
-namespace Appointment.Booking.Specifications;
+namespace Appointment.Management.Specifications;
 public class UpcomingAppointmentFiltration : Specification<Entities.Appointment>
 {
     #region Member Variables

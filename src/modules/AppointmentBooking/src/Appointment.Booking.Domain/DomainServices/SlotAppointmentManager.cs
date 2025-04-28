@@ -1,10 +1,9 @@
-﻿using Appointment.Booking.Specifications;
+﻿using Doctor.Appointment.Share.Consts;
 using Doctor.Appointment.Share.Dto;
 using Doctor.Appointment.Share.Services;
 using Doctor.Availability.Share.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Entities;
@@ -16,14 +15,19 @@ namespace Appointment.Booking.DomainServices
     public class SlotAppointmentManager : DomainService, ITransientDependency, ISlotAppointmentManager
     {
         private ISlotIntegration _slotIntegration { get; set; }
-        private IEventService<List<EmailNotificationDto>> _eventService { get; set; }
+        private IEventService<List<EmailNotificationDto>> _emailEventService { get; set; }
+        private IEventService<AppointmentDto> _appointmentEventService { get; set; }
         private IRepository<Entities.Appointment> _appointmentRepository { get; set; }
 
-        public SlotAppointmentManager(ISlotIntegration slotIntegration, IEventService<List<EmailNotificationDto>> eventService, IRepository<Entities.Appointment> appointmentRepository)
+        public SlotAppointmentManager(ISlotIntegration slotIntegration
+                                    , IEventService<List<EmailNotificationDto>> emailEventService
+                                    , IRepository<Entities.Appointment> appointmentRepository
+                                    , IEventService<AppointmentDto> appointmentEventService)
         {
             _slotIntegration = slotIntegration;
-            _eventService = eventService;
+            _emailEventService = emailEventService;
             _appointmentRepository = appointmentRepository;
+            _appointmentEventService = appointmentEventService;
         }
 
 
@@ -35,30 +39,34 @@ namespace Appointment.Booking.DomainServices
                 if (slot != null)
                 {
                     var createdAppointment = new Entities.Appointment(id, slotId, patientId, patientName, patientEmail, reservedAt);
-                    //send notification
-                    await SendConfirmationEmailData(patientEmail, slot.DoctorEmail, patientName, slot.DoctorName, slot.SlotTime);
+                    var addedAppointment = await _appointmentRepository.InsertAsync(createdAppointment);
+                    if (addedAppointment != null)
+                    {
+                        //Raise created Appointment event
+                        await _appointmentEventService.PublishEventAsync(new AppointmentDto
+                        {
+                            Id = id,
+                            SlotId = slotId,
+                            PatientId = patientId,
+                            PatientName = patientName,
+                            PatientEmail = patientEmail,
+                            ReservedAt = reservedAt
+                        }); //ToDo: use automapper
 
-                    return createdAppointment;
+                        //send notification
+                        await SendConfirmationEmailData(patientEmail, slot.DoctorEmail, patientName, slot.DoctorName, slot.SlotTime);
+                    }
+
+                    return addedAppointment;
                 }
                 {
-                    throw new EntityNotFoundException(BookingConsts.InvalidSlotIdErrorMessage);
+                    throw new EntityNotFoundException(DoctorAppointmentConsts.InvalidSlotIdErrorMessage);
                 }
             }
             else
             {
-                throw new EntityNotFoundException(BookingConsts.InvalidSlotIdErrorMessage);
+                throw new EntityNotFoundException(DoctorAppointmentConsts.InvalidSlotIdErrorMessage);
             }
-        }
-        public async Task<List<Entities.Appointment>> GetUpcomingAppointment(int doctorId)
-        {
-            List<Entities.Appointment> appointments = null;
-            var slots = await _slotIntegration.GetDoctorUpcomingSlots(doctorId);
-            if (slots != null && slots.Count > 0)
-            {
-                var query = await _appointmentRepository.GetQueryableAsync();
-                appointments = query.Where(new UpcomingAppointmentFiltration(slots.Select(s => s.Id).ToList()).ToExpression()).ToList();
-            }
-            return appointments;
         }
         private async Task SendConfirmationEmailData(string patientEmail, string doctorEmail, string patientName, string doctorName, DateTime slotTime)
         {
@@ -67,7 +75,7 @@ namespace Appointment.Booking.DomainServices
            new EmailNotificationDto { ReceiverEmail = patientEmail, EmailSubject="Appointment Confirmation", EmailContent = emailBody},
            new EmailNotificationDto { ReceiverEmail = doctorEmail, EmailSubject="Appointment Confirmation", EmailContent = emailBody} };
 
-            await _eventService.PublishEventAsync(emailData);
+            await _emailEventService.PublishEventAsync(emailData);
         }
     }
 }

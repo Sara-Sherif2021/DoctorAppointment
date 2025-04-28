@@ -7,6 +7,11 @@
     <RootNamespace>Appointment.Management</RootNamespace>
   </PropertyGroup>
 
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" Version="5.0.0" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Appointment.Management.Domain.Shared\Appointment.Management.Domain.Shared.csproj" />
   </ItemGroup>

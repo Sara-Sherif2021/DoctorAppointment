@@ -4,7 +4,7 @@ using Doctor.Appointment.Share.Enum;
 using System;
 using Volo.Abp.Domain.Entities;
 
-namespace Appointment.Booking.Entities
+namespace Appointment.Management.Entities
 {
     public class Appointment : Entity<Guid>
     {
@@ -33,8 +33,7 @@ namespace Appointment.Booking.Entities
         #endregion
 
         #region Public Methods
-        public void ChangeAppointmentStatus(AppointmentStatus appointmentStatus)
-        {
+        public void ChangeAppointmentStatus(AppointmentStatus appointmentStatus) {
             AppointmentStatus = appointmentStatus;
         }
         #endregion
