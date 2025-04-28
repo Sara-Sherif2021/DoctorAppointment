@@ -65,10 +65,10 @@ public class AppointmentModule : AbpModule
             options.AutoValidateIgnoredHttpMethods.Add("Delete");
         });
 
-        context.Services.AddTransient<Availability.Share.Interfaces.ISlotIntegration, Availability.Services.SlotIntegrationService>();
-        context.Services.AddTransient<Doctor.Appointment.Share.Services.INotificationService, Doctor.Appointment.Share.Services.NotificationService>();
-        context.Services.AddTransient<IUpcomingAppointment, UpcomingAppointment>();
-        context.Services.AddTransient<IUpdateAppointmentStatus, UpdateAppointmentStatus>();
+        context.Services.AddScoped<Availability.Share.Interfaces.ISlotIntegration, Availability.Services.SlotIntegrationService>();
+        context.Services.AddScoped(typeof(Share.Services.IEventService<>), typeof(Share.Services.EventService<>));
+        context.Services.AddScoped<IUpcomingAppointment, UpcomingAppointment>();
+        context.Services.AddScoped<IUpdateAppointmentStatus, UpdateAppointmentStatus>();
 
         ConfigureAutoMapper(context);
         ConfigureSwagger(context.Services, configuration);

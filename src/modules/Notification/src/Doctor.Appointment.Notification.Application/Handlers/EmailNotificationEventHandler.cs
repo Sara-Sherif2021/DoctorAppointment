@@ -13,7 +13,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Doctor.Appointment.Notification.Handlers
 {
-    public class EmailNotificationEventHandler : IDistributedEventHandler<EmailNotificationDto>, ITransientDependency
+    public class EmailNotificationEventHandler : IDistributedEventHandler<List<EmailNotificationDto>>, ITransientDependency
     {
         private readonly IEmailSender _emailSender;
         private readonly ILogger<EmailNotificationEventHandler> _logger;
@@ -22,15 +22,24 @@ namespace Doctor.Appointment.Notification.Handlers
             _emailSender = emailSender;
             _logger = logger;
         }
-
-        public async Task HandleEventAsync(EmailNotificationDto emailNotification)
+        public async Task HandleEventAsync(List<EmailNotificationDto> emailNotifications)
         {
-            _logger.LogInformation($"New email EmailSubject: {emailNotification.EmailSubject},  ReceiverEmail: {emailNotification.ReceiverEmail}, EmailContent: {emailNotification.EmailContent}"); 
-           // await _emailSender.SendAsync(
-           //    emailNotification.ReceiverEmail,     // target email address
-           //    emailNotification.EmailSubject,      // subject
-           //    emailNotification.EmailContent      // email body
-           //);
+            foreach (var emailData in emailNotifications)
+            {
+                _logger.LogInformation($"New email EmailSubject: {emailData.EmailSubject},  ReceiverEmail: {emailData.ReceiverEmail}, EmailContent: {emailData.EmailContent}");
+                try
+                {
+                    await _emailSender.SendAsync(
+                       emailData.ReceiverEmail,     // target email address
+                       emailData.EmailSubject,      // subject
+                       emailData.EmailContent      // email body
+                   );
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogException(ex);
+                }
+            }
         }
     }
 }

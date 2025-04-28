@@ -8,22 +8,21 @@ using Volo.Abp.EventBus.Distributed;
 
 namespace Doctor.Appointment.Share.Services
 {
-    public class NotificationService : ShareAppService, INotificationService
+    public class EventService<T> : ShareAppService, IEventService<T> where T : class
     {
 
         private readonly IDistributedEventBus _distributedEventBus;
 
-        public NotificationService(IDistributedEventBus distributedEventBus)
+        public EventService(IDistributedEventBus distributedEventBus)
         {
             _distributedEventBus = distributedEventBus;
         }
 
-        public async Task SendEmail(List<EmailNotificationDto> emailNotification)
+        public async Task PublishEventAsync(T eventData)
         {
-            foreach (var emailData in emailNotification)
-            {
-                await _distributedEventBus.PublishAsync<EmailNotificationDto>(emailData, true);
-            }
+           
+                await _distributedEventBus.PublishAsync<T>(eventData, true);
+            
         }
     }
 }
